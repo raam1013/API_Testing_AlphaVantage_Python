@@ -1,0 +1,59 @@
+
+I have tried the automate that AlphaVantage_Daily with my python minimol knowledge.
+Here I have written the code for IBM_TIME_SERIES_60_Mins_DAILY flow.
+I have add the params based on my requrement and hit the request
+Then I got list of IBM_TIME_SERIES response flow
+Those input and output I tried to generate in Allure Reports but unfartunately It shown only Test Case Name.
+So I did the console output converted into one html output file.
+-----------------------------------------------
+Process:
+Step_1:
+->Create the Python pytest Project
+->Then add all the required libraries
+1.requests
+2.alpha_vantage.timeseries
+3.requests_toolbelt.utils
+4.allure-pytest
+5.allure-python-commons
+6.json
+
+Step_2:
+->Download and set env variables and Create the Reports_Allure folder in Project
+
+Step_3:
+->Then create the multiple sets of functions and written code for IBM Symbol using request(URI+Payload+API KEY)
+->Here I have taken attributes for Payloads are:
+function= TIME_SERIES_INTRADAY
+symbol= symbol
+interval= 60min
+datatype= json
+apikey= H3RF2EQFQIC7O1R8
+
+Step_4:
+->Then execute the test_Request_04.py file for IBM request and Response(Here i tried with 1 min aslo but getting error)
+pytest -v -s GET_Requests/test_Request_04.py --alluredir=Reports_Allure
+
+Step_5:
+->Then go to Project directiory and open cmd, paste the below command.
+allure serve Reports_Allure
+->Once allure report is ready then automatically that generated the allure report open in default browser(chrome)
+
+
+TestCase_Name_In_Project:
+pytest -v -s GET_Requests/test_Request_04.py --alluredir=Reports_Allure
+allure serve Reports_Allure
+-----------------------------------------------
+API TestCases:
+1. Provide the Valid URI and Payload
+2. Provide the Invalid URI and Valid Payload
+3. Provide the multiple set of Payloads
+4. Provide the URI and Payloads without API Key
+5. Provide the null data in Payloads
+6. Provide the symbol(IBM) that is available in AlphaVantage_Daily API
+7. Provide the symbol(UHG) that not is available in AlphaVantage_Daily API
+8. Provide the interval is 60 Minutes in Daily
+9. Provide the interval is 1 Minutes in Daily
+10. Validate the Response in Json format
+11. Validate the Response with all the required attributes
+13. Validate the response time
+14. Validate the all the headers
